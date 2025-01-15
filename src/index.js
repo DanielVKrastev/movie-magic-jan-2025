@@ -7,7 +7,9 @@ app.engine('hbs', handlebars.engine({
     extname: 'hbs',
 }))
 app.set('view engine', 'hbs');
-app.set('views', './src/views')
+app.set('views', './src/views');
+
+app.use(express.static('src/public'));
 
 app.get('/', (req, res) => {
     res.render('home', { layout: false});
