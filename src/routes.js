@@ -5,7 +5,7 @@ const routes = Router();
 
 routes.use(homeController);
 
-app.get('*', (req, res) => {
+routes.get('*', (req, res) => {
     res.render('404');
 });
 

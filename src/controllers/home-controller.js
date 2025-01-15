@@ -1,5 +1,7 @@
 import { Router } from 'express';
 
+import movies from '../movies.js';
+
 const router = Router();
 
 router.get('/modular-router', (req, res) => {
@@ -7,7 +9,7 @@ router.get('/modular-router', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', { movies });
 })
 
 router.get('/about', (req, res) => {
