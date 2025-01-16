@@ -21,9 +21,7 @@ movieController.get('/:movieId/details', (req, res) => {
     const movieId = req.params.movieId;
     
     //Get movie data from movieId
-
     const movie = movieService.findOne(movieId);
-    console.log(movie);
     
     res.render('details', { movie });
 });

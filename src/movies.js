@@ -7,7 +7,7 @@ export default [
         imageUrl: '/static/img/jungle-cruise.jpeg',
         director: 'Jaume Collet-Serra',
         year: '2021',
-        rating: '6.1',
+        rating: 6.1,
         category: 'Movie',
     },
     {
@@ -18,7 +18,7 @@ export default [
         imageUrl: 'https://www.usatoday.com/gcdn/media/USATODAY/GenericImages/2013/06/12/1371055927000-AP-FILM-REVIEW-MAN-OF-STEEL-56426827-1306121255_3_4.JPG',
         director: 'Zack Snyder',
         year: '2013',
-        rating: '7.1',
+        rating: 7.1,
         category: 'Movie',
     }
 ];
