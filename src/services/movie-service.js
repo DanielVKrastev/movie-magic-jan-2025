@@ -1,13 +1,12 @@
 import { v4 as uuid } from "uuid";
 import movies from "../movies.js";
+import Movie from "../models/Movie.js";
 
 export default {
-    findOne(movieId) {
-    //TODO: If movie is missing?
+    getOne(movieId) {
+        const result = Movie.findById(movieId);
 
-    const result = movies.find(movie => movie.id === movieId);
-
-    return result;
+        return result;
     },
     create(movieData) {
         // TODO: add IDs
@@ -23,8 +22,9 @@ export default {
     },
     getAll(filter = {}){
 
-        let result = movies;
+        let result = Movie.find({}) // .lean() Second solution: https://mongoosejs.com/docs/api/query.html#Query.prototype.lean()
 
+        /*
         if(filter.search){
             result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
         }
@@ -36,6 +36,7 @@ export default {
         if(filter.year){
             result = result.filter(movie => movie.year === filter.year);
         }
+        */
 
         return result;
     }

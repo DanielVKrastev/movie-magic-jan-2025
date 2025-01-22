@@ -3,13 +3,14 @@ import movieService from '../services/movie-service.js';
 
 const router = Router();
 
-router.get('/modular-router', (req, res) => {
-    res.send('Modular router');
-});
+router.get('/', async (req, res) => {
+    const movies = await movieService.getAll(); // *.lean() Second solution: https://mongoosejs.com/docs/api/query.html#Query.prototype.lean() !!!!!!
 
-router.get('/', (req, res) => {
-    const movies = movieService.getAll();
-    res.render('home', { movies });
+    // *Convert documents to plain objects. First solution !!!!!!!
+    //const plainMovies = movies.map(m => m.toObject());
+
+    // *Third solution is to use allowProtoPropertyByDefault in hanlebars
+    res.render('home', { movies: movies });
 })
 
 router.get('/about', (req, res) => {
