@@ -22,22 +22,22 @@ export default {
     },
     getAll(filter = {}){
 
-        let result = Movie.find({}) // .lean() Second solution: https://mongoosejs.com/docs/api/query.html#Query.prototype.lean()
+        let query = Movie.find({}) // .lean() Second solution: https://mongoosejs.com/docs/api/query.html#Query.prototype.lean()
 
-        /*
         if(filter.search){
-            result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
+            // TODO: Fix partrial case insensitive search
+            query = query.find({title: filter.search})
         }
 
         if(filter.genre){
-            result = result.filter(movie => movie.genre.toLowerCase() === filter.genre);
+            // TODO: Add case insensitive search
+            query = query.find({genre: filter.genre})
         }
 
         if(filter.year){
-            result = result.filter(movie => movie.year === filter.year);
+            query = query.find({year: Number(filter.year)});
         }
-        */
-
-        return result;
+        
+        return query;
     }
 }
