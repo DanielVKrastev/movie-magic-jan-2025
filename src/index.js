@@ -22,6 +22,9 @@ try{
 // Handlerbars configuration
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true, // Third solution !!!!!
+    },
     helpers: {
         showRating: showRatingHelper,
     }
