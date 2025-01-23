@@ -28,7 +28,7 @@ movieController.get('/:movieId/details', async (req, res) => {
     //Get movie data from movieId
     const movie = await movieService.getOne(movieId);
     
-    res.render('details', { movie });
+    res.render('movie/details', { movie });
 });
 
 export default movieController;
