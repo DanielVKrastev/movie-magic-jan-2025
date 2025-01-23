@@ -6,6 +6,9 @@ export default {
 
         return result;
     },
+    getOneWithCast(movieId) {
+        return this.getOne(movieId).populate('casts'); // add .populate() -> full cast in casts row
+    },
     create(movieData) {
         const result = Movie.create({
             ...movieData,
