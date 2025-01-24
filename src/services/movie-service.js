@@ -39,12 +39,23 @@ export default {
         return query;
     },
     async attachCast(movieId, castId){
+        // TODO: Check if castId is not added already 
+
         // First way to attach
+        /*
         const movie = await Movie.findById(movieId);
+
+        if(movie.casts.includes(castId)){
+            return;
+        }
+
         movie.casts.push(castId);
         await movie.save();
 
         return movie;
+        */
+
         // Second way to attach
+        return Movie.findByIdAndUpdate(movieId, {$push: {casts: castId}}); //method with mongoDB
     }
 }

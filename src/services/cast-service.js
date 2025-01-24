@@ -5,7 +5,8 @@ export default {
         let query = Cast.find({});
 
         if (filter.exclude) {
-            query = query.find({_id: {$nin: filter.exclude}});
+            query = query.find({_id: {$nin: filter.exclude}}); //mongoose solution
+            //query = query.nin('_id', filter.exclude) //mongoDb solution
         }
 
         return query;
