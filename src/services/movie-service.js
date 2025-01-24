@@ -38,7 +38,7 @@ export default {
         
         return query;
     },
-    async attachCast(movieId, castId){
+    async attachCast(movieId, castId, character){
         // TODO: Check if castId is not added already 
 
         // First way to attach
@@ -57,5 +57,13 @@ export default {
 
         // Second way to attach
         return Movie.findByIdAndUpdate(movieId, {$push: {casts: castId}}); //method with mongoDB
+        // return Movie.findByIdAndUpdate(movieId, {
+        //     $push: {
+        //         casts: {
+        //              cast: castId,
+        //              character
+        //             }
+        //     }
+        // }); //method with mongoDB
     }
 }

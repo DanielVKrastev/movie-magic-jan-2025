@@ -14,6 +14,13 @@ const movieSchema = new Schema({
         type: Types.ObjectId,
         ref: 'Cast'
     }],
+    // casts: [{
+    //     character: String,
+    //     cast: {
+    //         type: Types.ObjectId,
+    //         ref: 'Cast'
+    //     },
+    // }],
 });
 
 // Create model
