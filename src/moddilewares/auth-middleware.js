@@ -19,7 +19,10 @@ export const authMiddleware = (req, res, next) => {
         next();
 
     }catch(err){
-        // TODO: Invalid token
+        // Invalid token
+
+        res.clearCookie('auth');
+        res.redirect('/auth/login');
     }
     
     // Guest users
