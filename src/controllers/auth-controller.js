@@ -4,7 +4,7 @@ import authService from "../services/auth-service.js";
 const authController = Router();
 
 authController.get('/register', (req, res) => {
-    res.render('auth/register')
+    res.render('auth/register', { pageTitle: 'Register'})
 });
 
 authController.post('/register', async (req, res) => {
@@ -17,7 +17,7 @@ authController.post('/register', async (req, res) => {
 });
 
 authController.get('/login', (req, res) => {
-    res.render('auth/login');
+    res.render('auth/login', { pageTitle: 'Login'});
 });
 
 authController.post('/login', async (req, res) => {
