@@ -9,12 +9,13 @@ export default {
     getOneWithCast(movieId) {
         return this.getOne(movieId).populate('casts'); // add .populate() -> full cast in casts row
     },
-    create(movieData) {
+    create(movieData, creatorId) {
         const result = Movie.create({
             ...movieData,
             rating: Number(movieData.rating),
-            year: Number(movieData.year)
-        })
+            year: Number(movieData.year),
+            creator: creatorId,
+        });
 
         return result;
     },
