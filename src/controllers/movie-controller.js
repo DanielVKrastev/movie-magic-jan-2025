@@ -33,8 +33,10 @@ movieController.get('/:movieId/details', async (req, res) => {
     //Get movie data from movieId
     const movie = await movieService.getOneWithCast(movieId);
     //const casts = await castService.getAll()
+
+    const isCreator = movie.creator && movie.creator.toString() === req.user?.id; //creator? if have creator
     
-    res.render('movie/details', { movie });
+    res.render('movie/details', { movie, isCreator });
 });
 
 movieController.get('/:movieId/attach-cast', async (req, res) => {
@@ -43,7 +45,7 @@ movieController.get('/:movieId/attach-cast', async (req, res) => {
     const movie = await movieService.getOne(movieId);
     const casts = await castService.getAll({exclude: movie.casts}); //filter without added ids
 
-    res.render('movie/attach-cast', { movie, casts });
+    res.render('movie/attach-cast', { movie, casts});
 });
 
 movieController.post('/:movieId/attach-cast', async (req, res) => {
