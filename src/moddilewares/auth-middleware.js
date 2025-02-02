@@ -29,3 +29,11 @@ export const authMiddleware = (req, res, next) => {
     // Guest users
 
 }
+
+export const isAuth = (req, res, next) => {
+    if(! req.user) {
+       return res.redirect('/auth/login');
+    }
+
+    next();
+};
