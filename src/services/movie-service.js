@@ -66,5 +66,8 @@ export default {
         //             }
         //     }
         // }); //method with mongoDB
+    },
+    delete(movieId){
+        return Movie.findByIdAndDelete(movieId);
     }
 }
