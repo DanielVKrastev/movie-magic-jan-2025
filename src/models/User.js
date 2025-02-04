@@ -4,16 +4,28 @@ import bcrypt from 'bcrypt';
 const userSchema = new Schema({
     email: {
         type: String,
+        required: true,
         unique: true, //This is not validator, it's index
-        match: /\@[a-zA-Z+.[a-zA-Z]+$]/,
+        lowercase: true, // Sanitizer -> call toLowerCase()
+        match: /\w+@[a-zA-Z+.[a-zA-Z]+$/,
         minLength: 10,
     },
     password: {
         type: String,
         match: /^\w+$/,
-        minLength: 6,
+        minLength: [6, 'Password should be at least 6 characters'],
+        trim: true //Sanitizer too
     },
 });
+/*
+// Virtual property:
+userSchema.virtual('rePassword') // In level memory, not in database
+    .set(function(rePassword) {
+        if (rePassword != this.password){
+            throw new Error('Password missmatch!');
+        }
+    });
+*/
 
 userSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, 10); // (10) Salt rounds
